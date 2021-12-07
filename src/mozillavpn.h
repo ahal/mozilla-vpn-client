@@ -126,6 +126,7 @@ class MozillaVPN final : public QObject {
   Q_PROPERTY(bool debugMode READ debugMode CONSTANT)
   Q_PROPERTY(QString currentView READ currentView WRITE setCurrentView NOTIFY
                  currentViewChanged)
+  Q_PROPERTY(QStringList serverCooldownList READ serverCooldownList CONSTANT)
 
  public:
   MozillaVPN();
@@ -314,6 +315,10 @@ class MozillaVPN final : public QObject {
   }
 
   void hardReset();
+
+  QStringList serverCooldownList() const {
+    return m_private->m_serverCooldown.keys();
+  }
 
  private:
   void setState(State state);

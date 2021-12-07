@@ -112,6 +112,7 @@ class Controller final : public QObject {
 
   void connectionConfirmed();
   void connectionFailed();
+  void handshakeTimeout();
 
  signals:
   void stateChanged();
@@ -164,6 +165,7 @@ class Controller final : public QObject {
   QString m_switchingEntryCity;
 
   QTimer m_connectingTimer;
+  QTimer m_handshakeTimer;
   bool m_enableDisconnectInConfirming = false;
 
   enum NextStep {
